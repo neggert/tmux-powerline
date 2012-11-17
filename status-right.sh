@@ -32,27 +32,27 @@ mail_count+=(["script"]="${segments_path}/mail_count_maildir.sh")
 mail_count+=(["foreground"]="white")
 mail_count+=(["background"]="red")
 mail_count+=(["separator"]="${separator_left_bold}")
-register_segment "mail_count"
+#register_segment "mail_count"
 
-declare -A now_playing
-if [ "$PLATFORM" == "linux" ]; then
-	now_playing+=(["script"]="${segments_path}/np_mpd.sh")
-	#now_playing+=(["script"]="${segments_path}/np_mpd_simple.sh")
-	#now_playing+=(["script"]="${segments_path}/np_mocp.sh")
-	#now_playing+=(["script"]="${segments_path}/np_spotify_linux_wine.sh")
-	#now_playing+=(["script"]="${segments_path}/np_spotify_linux_native.sh")
-	#now_playing+=(["script"]="${segments_path}/np_rhythmbox.sh")
-	#now_playing+=(["script"]="${segments_path}/np_banshee.sh")
-	#now_playing+=(["script"]="${segments_path}/np_audacious.sh")
-elif [ "$PLATFORM" == "mac" ]; then
-	now_playing+=(["script"]="${segments_path}/np_itunes_mac.sh")
-fi
-if [[ ${now_playing["script"]} ]]; then
-	now_playing+=(["foreground"]="colour37")
-	now_playing+=(["background"]="colour234")
-	now_playing+=(["separator"]="${separator_left_bold}")
-	register_segment "now_playing"
-fi
+#declare -A now_playing
+#if [ "$PLATFORM" == "linux" ]; then
+#	now_playing+=(["script"]="${segments_path}/np_mpd.sh")
+#	#now_playing+=(["script"]="${segments_path}/np_mpd_simple.sh")
+#	#now_playing+=(["script"]="${segments_path}/np_mocp.sh")
+#	#now_playing+=(["script"]="${segments_path}/np_spotify_linux_wine.sh")
+#	#now_playing+=(["script"]="${segments_path}/np_spotify_linux_native.sh")
+#	#now_playing+=(["script"]="${segments_path}/np_rhythmbox.sh")
+#	#now_playing+=(["script"]="${segments_path}/np_banshee.sh")
+#	#now_playing+=(["script"]="${segments_path}/np_audacious.sh")
+#elif [ "$PLATFORM" == "mac" ]; then
+#	now_playing+=(["script"]="${segments_path}/np_itunes_mac.sh")
+#fi
+#if [[ ${now_playing["script"]} ]]; then
+#	now_playing+=(["foreground"]="colour37")
+#	now_playing+=(["background"]="colour234")
+#	now_playing+=(["separator"]="${separator_left_bold}")
+#	register_segment "now_playing"
+#fi
 
 declare -A cpu
 cpu+=(["script"]="${segments_path}/cpu.sh")
@@ -67,6 +67,13 @@ load+=(["foreground"]="colour167")
 load+=(["background"]="colour237")
 load+=(["separator"]="${separator_left_bold}")
 register_segment "load"
+
+declare -A mem
+mem+=(["script"]="$HOME/bin/tmux-applets/tmux-mem")
+mem+=(["foreground"]="colour167")
+mem+=(["background"]="colour237")
+mem+=(["separator"]="${separator_left_bold}")
+register_segment "mem"
 
 declare -A battery
 if [ "$PLATFORM" == "mac" ]; then
@@ -85,7 +92,7 @@ weather+=(["script"]="${segments_path}/weather_yahoo.sh")
 weather+=(["foreground"]="colour255")
 weather+=(["background"]="colour37")
 weather+=(["separator"]="${separator_left_bold}")
-register_segment "weather"
+#register_segment "weather"
 
 declare -A xkb_layout
 if [ "$PLATFORM" == "linux" ]; then
@@ -117,7 +124,7 @@ time+=(["foreground"]="colour136")
 time+=(["background"]="colour235")
 time+=(["separator"]="${separator_left_thin}")
 time+=(["separator_fg"]="default")
-register_segment "time"
+#register_segment "time"
 
 # Print the status line in the order of registration above.
 print_status_line_right
