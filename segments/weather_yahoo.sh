@@ -16,37 +16,47 @@ update_period=600
 # Cache file.
 tmp_file="${tp_tmpdir}/weather_yahoo.txt"
 
+# Get symbol for condition. Available conditions: http://developer.yahoo.com/weather/#codes
 get_condition_symbol() {
     local condition=$(echo "$1" | tr '[:upper:]' '[:lower:]')
     case "$condition" in
     "sunny" | "hot")
         hour=$(date +%H)
         if [ "$hour" -ge "22" -o "$hour" -le "5" ]; then
+            #echo "☽"
             echo "☾"
         else
+            #echo "☀"
             echo "☼"
         fi
         ;;
-    "mixed rain and snow" | "mixed rain and sleet" | "freezing drizzle" | "drizzle" | "freezing rain" | "showers" | "mixed rain and hail" | "scattered showers" | "isolated thundershowers" | "thundershowers")
-        echo "☔"
+    "rain" | "mixed rain and snow" | "mixed rain and sleet" | "freezing drizzle" | "drizzle" | "freezing rain" | "showers" | "mixed rain and hail" | "scattered showers" | "isolated thundershowers" | "thundershowers")
+            #echo "☂"
+            echo "☔"
         ;;
     "snow" | "mixed snow and sleet" | "snow flurries" | "light snow showers" | "blowing snow" | "sleet" | "hail" | "heavy snow" | "scattered snow showers" | "snow showers")
-        echo "❅"
+            #echo "☃"
+            echo "❅"
         ;;
     "cloudy" | "mostly cloudy" | "partly cloudy")
         echo "☁"
         ;;
     "tornado" | "tropical storm" | "hurricane" | "severe thunderstorms" | "thunderstorms" | "isolated thunderstorms" | "scattered thunderstorms")
-        echo "☈"
+            #echo "⚡"
+            echo "☈"
         ;;
-    "dust" | "foggy" | "haze" | "smoky" | "blustery" | "mist")
-        echo "♨"
+    "dust" | "foggy" | "fog" | "haze" | "smoky" | "blustery" | "mist")
+        #echo "♨"
+        #echo "﹌"
+        echo "〰"
         ;;
     "windy")
+        #echo "⚐"
         echo "⚑"
         ;;
     "clear" | "fair" | "cold")
-        echo "✈"    # So clear you can see the aeroplanes! TODO what symbol does best represent a clear sky?
+        #echo "✈"    # So clear you can see the aeroplanes!
+        echo "〇"
         ;;
     *)
         echo "？"
