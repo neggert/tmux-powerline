@@ -22,10 +22,10 @@ if [ -z $TMUX_POWERLINE_LEFT_STATUS_SEGMENTS ]; then
 	TMUX_POWERLINE_LEFT_STATUS_SEGMENTS=(
 		#"tmux_session_info 148 234" \
 		"hostname blue brightblack" \
-		#"ifstat 30 255" \
-		#"ifstat_sys 30 255" \
-		#"lan_ip 24 255 ${TMUX_POWERLINE_SEPARATOR_RIGHT_THIN}" \
-		#"wan_ip 24 255" \
+		#"ifstat cyan brightblack \
+		"ifstat_sys yellow brightblack" \
+		#"lan_ip cyan brightblack ${TMUX_POWERLINE_SEPARATOR_RIGHT_THIN}" \
+		#"wan_ip cyan brightblack" \
 		#"vcs_branch 29 88" \
 		#"vcs_compare 60 255" \
 		#"vcs_staged 64 255" \
@@ -40,9 +40,9 @@ if [ -z $TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS ]; then
 		#"mail_count_maildir 9 255" \
 		#"now_playing 234 37" \
 		#"cpu 240 136" \
-		#"load 237 167" \
-		"tmux_mem_cpu_load yellow brightblack" \
-		#"battery 137 127" \
+		"load yellow brightblack" \
+		#"tmux_mem_cpu_load yellow brightblack" \
+		"battery yellow brightblack" \
 		#"weather 37 255" \
 		#"xkb_layout 125 117" \
 		"date_day blue brightblack" \
